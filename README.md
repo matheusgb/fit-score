@@ -7,11 +7,39 @@ Pontua a adesão de uma vaga a um perfil profissional por **critérios explícit
 
 > **Todos os dados deste repositório são sintéticos** (pasta `fixtures/`, empresas "Exemplo A/B/C"). Nada aqui vem de vagas ou pessoas reais.
 
-![Interface mostrando a nota 87 e a explicação por critério](docs/demo.png)
+![Interface com a nota 87 em um anel, a barra de pontos e a explicação do critério de requisitos obrigatórios](docs/demo.png)
 
 ## O problema
 
 Comparar vagas com o próprio perfil costuma ser feito "no olho", e a decisão fica difícil de justificar: por que esta vaga parece melhor que aquela? O fit-score torna o critério explícito. Você escreve os pesos numa rubrica, e cada nota vem com a conta aberta: quais requisitos foram atendidos, qual trecho da descrição cita cada item e quantos pontos cada critério rendeu.
+
+## Exemplo de saída
+
+Resposta real de `POST /api/score` para a vaga de exemplo A e o perfil de exemplo (trecho: só o primeiro critério, com 2 dos 5 itens; os outros critérios foram omitidos):
+
+```json
+{
+  "total": 87,
+  "earnedPoints": 86.66666666666666,
+  "maxPoints": 100,
+  "rubricVersion": 1,
+  "criteria": [
+    {
+      "id": "required-skills",
+      "label": "Requisitos obrigatórios da vaga",
+      "weight": 50,
+      "applicable": true,
+      "ratio": 1,
+      "points": 50,
+      "reason": "5 de 5 itens atendidos pelo perfil.",
+      "items": [
+        { "name": "TypeScript", "met": true, "evidence": "Você vai trabalhar com TypeScript no front e no back." },
+        { "name": "Node.js", "met": true, "evidence": "A API roda em Node.js sobre PostgreSQL." }
+      ]
+    }
+  ]
+}
+```
 
 ## Como rodar
 
@@ -23,29 +51,14 @@ npm run build
 npm start            # http://127.0.0.1:3000
 ```
 
-Desenvolvimento (API e interface com recarga):
-
-```bash
-npm run dev:api      # API em :3000
-npm run dev:web      # Vite, com proxy de /api para :3000
-```
-
-Verificações:
-
-```bash
-npm run typecheck    # TypeScript estrito, núcleo/servidor e interface
-npm test             # testes unitários e da API (Vitest)
-npm run build && npx playwright install chromium && npm run test:e2e   # ponta a ponta (Playwright)
-```
-
-Docker:
+Ou com Docker:
 
 ```bash
 docker build -t fit-score .
 docker run --rm -p 3000:3000 fit-score
 ```
 
-Variáveis: `PORT` (padrão 3000), `HOST` (padrão 127.0.0.1; a imagem Docker usa 0.0.0.0), `RUBRIC_PATH` (outra rubrica).
+Variáveis: `PORT` (padrão 3000), `HOST` (padrão 127.0.0.1; a imagem Docker usa 0.0.0.0), `RUBRIC_PATH` (outra rubrica). Desenvolvimento e testes: veja [Desenvolvimento e verificações](#desenvolvimento-e-verificações).
 
 ## Como a nota é calculada
 
@@ -88,6 +101,16 @@ flowchart LR
 - `src/core`: esquemas (zod), normalização de texto e `scoreFit`, uma função pura sem I/O.
 - `src/server`: Fastify. `GET /api/health`, `/api/rubric`, `/api/examples` e `POST /api/score`, validado com os mesmos esquemas; entrada inválida volta 400 com o caminho de cada campo.
 - `web`: interface React que consome a API e exibe a explicação por critério.
+
+## Desenvolvimento e verificações
+
+```bash
+npm run dev:api      # API em :3000
+npm run dev:web      # Vite, com proxy de /api para :3000
+npm run typecheck    # TypeScript estrito, núcleo/servidor e interface
+npm test             # testes unitários e da API (Vitest)
+npm run build && npx playwright install chromium && npm run test:e2e   # ponta a ponta (Playwright)
+```
 
 ## Decisões e trade-offs
 
