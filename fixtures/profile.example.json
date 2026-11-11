@@ -1,0 +1,7 @@
+{
+  "note": "EXEMPLO SINTÉTICO: perfil fictício criado para este repositório. Não descreve uma pessoa real.",
+  "skills": ["TypeScript", "Node.js", "React", "PostgreSQL", "Docker", "Git", "Testes automatizados"],
+  "seniority": "senior",
+  "modalities": ["remote", "hybrid"],
+  "languages": ["português", "inglês"]
+}

@@ -1,0 +1,11 @@
+{
+  "note": "EXEMPLO SINTÉTICO: vaga fictícia criada para este repositório. A empresa não existe.",
+  "title": "Pessoa Desenvolvedora Fullstack Sênior",
+  "company": "Empresa Exemplo A",
+  "description": "Buscamos alguém para evoluir uma plataforma de agendamento. Você vai trabalhar com TypeScript no front e no back. A API roda em Node.js sobre PostgreSQL. A interface é feita em React. Esperamos testes automatizados nas entregas. Conhecer Kubernetes e GraphQL é um diferencial. Docker faz parte do dia a dia. A comunicação com o time de produto é em inglês.",
+  "required": ["TypeScript", "Node.js", "React", "PostgreSQL", "Testes automatizados"],
+  "desired": ["Docker", "Kubernetes", "GraphQL"],
+  "seniority": "senior",
+  "modality": "remote",
+  "languages": ["inglês"]
+}

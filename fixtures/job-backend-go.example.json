@@ -1,0 +1,11 @@
+{
+  "note": "EXEMPLO SINTÉTICO: vaga fictícia criada para este repositório. A empresa não existe.",
+  "title": "Pessoa Engenheira de Backend Sênior (Go)",
+  "company": "Empresa Exemplo B",
+  "description": "O time cuida de um serviço de pedidos. A base de código é em Go. Os dados ficam em PostgreSQL. Eventos trafegam por Kafka. Trabalhamos em modelo híbrido, dois dias por semana no escritório. Documentação técnica é escrita em inglês.",
+  "required": ["Go", "PostgreSQL", "Kafka"],
+  "desired": ["Docker"],
+  "seniority": "senior",
+  "modality": "hybrid",
+  "languages": ["inglês"]
+}

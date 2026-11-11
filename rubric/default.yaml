@@ -1,0 +1,38 @@
+# Rubrica padrão do fit-score. Cada critério soma pontos até o seu peso; a nota final é
+# (pontos obtidos / pontos possíveis dos critérios aplicáveis) x 100. Edite este arquivo para mudar a nota:
+# nada além dele decide pesos, critérios ou equivalências.
+version: 1
+
+# Nomes equivalentes. A chave é a forma canônica; a lista traz as variantes aceitas.
+aliases:
+  typescript: [ts]
+  javascript: [js]
+  node.js: [node, nodejs]
+  postgresql: [postgres, psql]
+  ci/cd: [integração contínua]
+  react: [react.js, reactjs]
+  kubernetes: [k8s]
+  golang: [go]
+
+criteria:
+  - id: required-skills
+    kind: required-skills
+    label: Requisitos obrigatórios da vaga
+    weight: 50
+  - id: desired-skills
+    kind: desired-skills
+    label: Diferenciais da vaga
+    weight: 20
+  - id: seniority
+    kind: seniority
+    label: Nível de senioridade
+    weight: 15
+    partialBelowOne: 0.5
+  - id: modality
+    kind: modality
+    label: Modalidade de trabalho
+    weight: 10
+  - id: languages
+    kind: languages
+    label: Idiomas
+    weight: 5

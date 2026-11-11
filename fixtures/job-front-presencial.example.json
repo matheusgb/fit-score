@@ -1,0 +1,11 @@
+{
+  "note": "EXEMPLO SINTÉTICO: vaga fictícia criada para este repositório. A empresa não existe.",
+  "title": "Desenvolvedora Front-end Staff",
+  "company": "Empresa Exemplo C",
+  "description": "Vaga presencial. Você vai montar telas em React e manter o design system. Conhecimento de CSS é indispensável. Storybook é um diferencial.",
+  "required": ["React", "CSS"],
+  "desired": ["Storybook"],
+  "seniority": "staff",
+  "modality": "onsite",
+  "languages": []
+}
