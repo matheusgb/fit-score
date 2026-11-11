@@ -1,0 +1,118 @@
+:root {
+  color-scheme: light dark;
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  line-height: 1.5;
+}
+
+body {
+  margin: 0;
+}
+
+main {
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 3rem;
+}
+
+h1 {
+  margin-bottom: 0.25rem;
+}
+
+.muted {
+  opacity: 0.75;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+label {
+  display: block;
+  margin: 0.75rem 0 0.25rem;
+  font-weight: 600;
+}
+
+select,
+textarea {
+  width: 100%;
+  box-sizing: border-box;
+  font: inherit;
+}
+
+textarea {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.85rem;
+}
+
+button {
+  font: inherit;
+  padding: 0.5rem 1.25rem;
+  cursor: pointer;
+}
+
+.error {
+  margin: 1rem 0;
+  padding: 0.5rem 1rem;
+  border: 1px solid #c0392b;
+  border-radius: 4px;
+}
+
+.total {
+  font-size: 1.5rem;
+  margin-bottom: 0;
+}
+
+.criteria,
+.items {
+  list-style: none;
+  padding-left: 0;
+}
+
+.criterion {
+  margin: 0.75rem 0;
+  padding: 0.75rem 1rem;
+  border: 1px solid #8884;
+  border-radius: 4px;
+}
+
+.criterion-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.items li {
+  margin: 0.25rem 0;
+}
+
+.met {
+  color: #1e8449;
+}
+
+.missing {
+  color: #b03a2e;
+}
+
+blockquote {
+  margin: 0.25rem 0 0.5rem 1rem;
+  padding-left: 0.75rem;
+  border-left: 3px solid #8886;
+  color: inherit;
+  opacity: 0.85;
+}
+
+.no-evidence {
+  opacity: 0.7;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
