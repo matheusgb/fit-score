@@ -15,7 +15,7 @@ Comparar vagas com o próprio perfil costuma ser feito "no olho", e a decisão f
 
 ## Como rodar
 
-Requisitos: Node.js 22 ou superior (CI e verificação local com Node 24).
+Requisitos: Node.js 24 (a versão usada no CI e na verificação local; outras não foram testadas).
 
 ```bash
 npm ci
