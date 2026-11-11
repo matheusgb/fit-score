@@ -114,14 +114,23 @@ function scoreModality(criterion: Criterion, profile: Profile, job: Job): Criter
 }
 
 function scoreLanguages(criterion: Criterion, profile: Profile, job: Job): CriterionResult {
-  const wanted = [...new Set(job.languages.map(normalize))];
+  const seen = new Set<string>();
+  const wanted = job.languages.filter((name) => {
+    const key = normalize(name);
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
   if (wanted.length === 0) {
     return notApplicable(criterion, 'A vaga não lista idiomas; o critério não entra na nota.');
   }
   const owned = new Set(profile.languages.map(normalize));
-  const items: ItemResult[] = wanted.map((name) => ({ name, met: owned.has(name) }));
+  const items: ItemResult[] = wanted.map((name) => {
+    const evidence = findEvidence(job.description, [name]);
+    return { name, met: owned.has(normalize(name)), ...(evidence === undefined ? {} : { evidence }) };
+  });
   const met = items.filter((item) => item.met).length;
-  return withRatio(criterion, met / items.length, `${met} de ${items.length} idiomas atendidos pelo perfil.`, items);
+  return withRatio(criterion, met / items.length, `Idiomas atendidos pelo perfil: ${met} de ${items.length}.`, items);
 }
 
 function scoreCriterion(

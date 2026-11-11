@@ -48,6 +48,14 @@ describe('scoreFit com os exemplos sintéticos', () => {
     expect(node?.evidence).toBe('A API roda em Node.js sobre PostgreSQL.');
   });
 
+  it('idiomas mantêm o nome original e trazem o trecho da vaga', () => {
+    const result = scoreFit(profile, loadJob('fullstack'), rubric);
+    const [item] = criterion(result, 'languages').items;
+    expect(item?.name).toBe('inglês');
+    expect(item?.met).toBe(true);
+    expect(item?.evidence).toBe('A comunicação com o time de produto é em inglês.');
+  });
+
   it('é determinístico: duas chamadas dão o mesmo resultado', () => {
     const job = loadJob('fullstack');
     expect(scoreFit(profile, job, rubric)).toEqual(scoreFit(profile, job, rubric));
